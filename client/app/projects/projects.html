@@ -1,0 +1,53 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Code for Seoul</h1>
+  </div>
+</header>
+<div class="container">
+  <div class="col-md-12">
+    <ul class="projects">
+      <li class="project" ng-repeat="project in projects">
+        <div class="col-md-8">
+          <span class="projectmark"><i class="fa fa-{{project.api}} fa-2x"></i></span>
+          <h3><a href="/project/{{project.id}}">{{project.title}}</a> <span>{{project.latest}}</span></h3>
+          <p>{{project.desc}}</p>
+        </div>
+        <div class="col-md-4">
+          <ul class="members">
+            <li class="member col-md-3" ng-repeat="member in members">
+              <a href="#" class="thumbnail member-thumbnail">
+                <img src="{{member.avatar}}" alt="">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<style>
+ul {
+  list-style: none;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.project {
+  margin: 10px 0px 20px 0px;
+}
+
+.projects h3 {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.projects h3 span {
+  font-size: 10px;
+}
+.member-thumbnail {
+  width: 60px;
+}
+</style>
