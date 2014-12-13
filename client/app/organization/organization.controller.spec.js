@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: ProjectCtrl', function () {
+describe('Controller: OrganizationCtrl', function () {
 
   // load the controller's module
   beforeEach(module('openPmsApp'));
 
-  var ProjectCtrl, scope;
+  var OrganizationCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    ProjectCtrl = $controller('ProjectCtrl', {
+    OrganizationCtrl = $controller('OrganizationCtrl', {
       $scope: scope
     });
   }));

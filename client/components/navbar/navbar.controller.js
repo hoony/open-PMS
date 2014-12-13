@@ -2,10 +2,7 @@
 
 angular.module('openPmsApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
-    $scope.menu = [{
-      'title': 'Home',
-      'link': '/projects'
-    }];
+    $scope.menu = [];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
@@ -18,6 +15,6 @@ angular.module('openPmsApp')
     };
 
     $scope.isActive = function(route) {
-      return route === $location.path();
+      return route === $location.path('');
     };
   });
