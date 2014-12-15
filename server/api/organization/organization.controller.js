@@ -4,7 +4,7 @@ module.exports = function (c) {
   return {
     index: function (req, res) {
       var data = [];
-      c.query('SELECT * from projects;')
+      c.query('SELECT * from organizations;')
         .on('result', function (result) {
           result.on('row', function (row) {
             data.push(row);
@@ -19,7 +19,7 @@ module.exports = function (c) {
     },
 
     show: function (req, res) {
-      c.query('SELECT * from projects where projectId =' + req.params.id)
+      c.query('SELECT * from organizations where orgId =' + req.params.id)
         .on('result', function (result) {
           result.on('row', function (row) {
             res.json(row);
@@ -30,23 +30,6 @@ module.exports = function (c) {
         })
         .on('end', function () {
           console.log('Found a requested data successfully');
-        })
-    },
-
-    create: function (req, res) {
-      var params = req.body;
-      c.query('INSERT INTO projects (title, desc, orgId) VALUES (:title, :desc, :orgId)',
-        {title: params.title, desc: params.desc, orgId: params.orgId})
-        .on('result', function (result) {
-          result.on('row', function (row) {
-            console.log(row);
-          })
-          .on('error', function (err) {
-            console.log(err);
-          })
-        })
-        .on('end', function () {
-          console.log('create a new project successfully!');
         })
     }
   }

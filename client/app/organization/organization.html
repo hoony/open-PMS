@@ -2,23 +2,24 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>Code for Seoul</h1>
+    <h1>{{org.name}}</h1>
   </div>
 </header>
 <div class="container">
   <div class="col-md-12">
     <ul class="projects">
-      <li class="project" ng-repeat="project in projects">
+      <li class="project" ng-repeat="project in org.projects">
         <div class="col-md-8">
           <span class="projectmark"><i class="fa fa-{{project.api}} fa-2x"></i></span>
-          <h3><a href="/project/{{project.id}}">{{project.title}}</a> <span>{{project.latest}}</span></h3>
+          <h3><a href="/{{org.url}}/{{project.url}}">{{project.title}}</a> <span>{{project.latest}}</span></h3>
+          <progressbar class="progress-striped active" max="100" value="project.progress"><i>{{project.progress}}</i></progressbar>
           <p>{{project.desc}}</p>
         </div>
         <div class="col-md-4">
           <ul class="members">
-            <li class="member col-md-3" ng-repeat="member in members">
+            <li class="member col-md-3" ng-repeat="member in project.members">
               <a href="#" class="thumbnail member-thumbnail">
-                <img src="{{member.avatar}}" alt="">
+                <img src="{{member.avatar | filter:filterAdmin}}" alt="">
               </a>
             </li>
           </ul>

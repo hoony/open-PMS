@@ -8,5 +8,12 @@ module.exports = {
     uri: 'mongodb://localhost/openpms-dev'
   },
 
+  mariadb: {
+    host: '127.0.0.1',
+    user: 'root',
+    password: '',
+    multiStatements: true
+  },
+
   seedDB: true
 };

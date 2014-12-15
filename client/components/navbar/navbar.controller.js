@@ -3,8 +3,6 @@
 angular.module('openPmsApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title': 'Home',
-      'link': '/projects'
     }];
 
     $scope.isCollapsed = true;

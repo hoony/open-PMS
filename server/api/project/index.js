@@ -1,15 +1,17 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./project.controller');
-
 var router = express.Router();
+var Maraidb = require('mariasql');
 
-router.get('/', controller.index);
-router.get('/:id', controller.show);
-router.post('/', controller.create);
-router.put('/:id', controller.update);
-router.patch('/:id', controller.update);
-router.delete('/:id', controller.destroy);
+module.exports = function (c) {
+  var projectCtrl = require('./project.controller')(c);
+  var issueCtrl = require('./issue.controller')(c);
 
-module.exports = router;
+  router.get('/', projectCtrl.index);
+  router.get('/:id', projectCtrl.show);
+
+  router.get('/:projectId/issues', issueCtrl.index);
+  router.get('/:projectId/issues/:issueId', issueCtrl.show);
+  return router;
+}
