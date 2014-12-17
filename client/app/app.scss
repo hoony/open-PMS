@@ -21,6 +21,15 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 @import 'admin/admin.scss';
 @import 'main/main.scss';
 @import 'project/project.scss';
-@import 'projects/projects.scss';
+@import 'project/update/update.scss';
+@import 'user/user.scss';
 @import 'modal/modal.scss';
 // endinjector
+
+.label-bug {
+  background-color: red;
+}
+
+.label-enhancement {
+  background-color: #337AB7;
+}

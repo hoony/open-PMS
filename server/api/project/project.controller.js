@@ -20,6 +20,15 @@ exports.show = function(req, res) {
   });
 };
 
+// Get a single project
+exports.showByUrl = function(req, res) {
+  Project.findOne(req.params.projectUrl, function (err, project) {
+    if(err) { return handleError(res, err); }
+    if(!project) { return res.send(404); }
+    return res.json(project);
+  });
+};
+
 // Creates a new project in the DB.
 exports.create = function(req, res) {
   Project.create(req.body, function(err, project) {

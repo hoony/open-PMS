@@ -5,7 +5,8 @@ angular.module('openPmsApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'summernote'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

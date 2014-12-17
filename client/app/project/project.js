@@ -3,7 +3,7 @@
 angular.module('openPmsApp')
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/project/:id', {
+      .when('/:projectUrl', {
         templateUrl: 'app/project/project.html',
         controller: 'ProjectCtrl'
       });

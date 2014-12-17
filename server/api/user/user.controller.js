@@ -37,14 +37,17 @@ exports.create = function (req, res, next) {
 /**
  * Get a single user
  */
-exports.show = function (req, res, next) {
-  var userId = req.params.id;
+exports.showByUrl = function (req, res, next) {
+  var userUrl = req.params.userUrl;
 
-  User.findById(userId, function (err, user) {
-    if (err) return next(err);
-    if (!user) return res.send(401);
-    res.json(user.profile);
-  });
+  User
+    .findOne()
+    .where('url', userUrl)
+    .exec(function (err, user) {
+      if (err) return next(err);
+      if (!user) return res.send(401);
+      res.json(user);
+    });
 };
 
 /**

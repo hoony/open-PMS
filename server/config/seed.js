@@ -5,45 +5,182 @@
 
 'use strict';
 
-var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
-
-Thing.find({}).remove(function() {
-  Thing.create({
-    name : 'Development Tools',
-    info : 'Integration with popular tools such as Bower, Grunt, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, CoffeeScript, and Less.'
-  }, {
-    name : 'Server and Client integration',
-    info : 'Built with a powerful and fun stack: MongoDB, Express, AngularJS, and Node.'
-  }, {
-    name : 'Smart Build System',
-    info : 'Build system ignores `spec` files, allowing you to keep tests alongside code. Automatic injection of scripts and styles into your index.html'
-  },  {
-    name : 'Modular Structure',
-    info : 'Best practice client and server structures allow for more code reusability and maximum scalability'
-  },  {
-    name : 'Optimized Build',
-    info : 'Build process packs up your templates as a single JavaScript payload, minifies your scripts/css/images, and rewrites asset names for caching.'
-  },{
-    name : 'Deployment Ready',
-    info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
-  });
-});
+var Project = require('../api/project/project.model');
+var Update = require('../api/project/update/update.model');
+var Issue = require('../api/project/issue/issue.model');
 
 User.find({}).remove(function() {
   User.create({
     provider: 'local',
-    name: 'Test User',
+    name: 'Mozodev',
+    url: 'mozodev',
+    avatar: 'https://avatars2.githubusercontent.com/u/1661950?v=3&s=460',
     email: 'test@test.com',
+    projects: [{
+      title: 'open-PMS',
+      desc: 'open-PMS is blah blah blah blah blah blah blah blah blah.',
+      api: 'github',
+      url: 'open-pms'
+    },{
+      title: 'codenamu.github.io',
+      desc: 'codenamu.github.io is blah blah blah blah blah blah blah blah blah.',
+      api: 'github',
+      url: 'codenamu.github.io'
+    }],
     password: 'test'
   }, {
     provider: 'local',
     role: 'admin',
-    name: 'Admin',
+    name: 'Hoony',
+    url: 'hoony',
+    avatar: 'https://avatars1.githubusercontent.com/u/1366161?v=3&s=460',
     email: 'admin@admin.com',
+    projects: [{
+      title: 'open-PMS',
+      desc: 'open-PMS is blah blah blah blah blah blah blah blah blah.',
+      api: 'github',
+      url: 'open-pms'
+    },{
+      title: 'codenamu.github.io',
+      desc: 'codenamu.github.io is blah blah blah blah blah blah blah blah blah.',
+      api: 'github',
+      url: 'codenamu.github.io'
+    }],
     password: 'admin'
   }, function() {
       console.log('finished populating users');
     }
   );
 });
+
+Project.find({}).remove(function () {
+  Project.create({
+    title: 'open-PMS',
+    url: 'open-pms',
+    desc: 'open-PMS is  a PMS for open communities',
+    progress: 21,
+    api: 'github',
+    members: [{
+      avatar: 'https://avatars1.githubusercontent.com/u/1366161?v=3&s=460',
+      url: 'hoony'
+    }],
+    updates: [{
+      id: 1,
+      title: 'error with mogoose',
+      desc: 'i cannot use some methods of mogoose',
+      label: 'bug'
+    },{
+      id: 2,
+      title: 'change from mongo to mariadb',
+      desc: 'should we?',
+      label: 'suggest'
+    }]
+  },{
+    title: 'codenamu.github.io',
+    url: 'coenamu.github.io',
+    desc: 'official website of codenamu',
+    progress: 57,
+    api: 'github',
+    members: [{
+      avatar: 'https://avatars1.githubusercontent.com/u/1366161?v=3&s=460',
+      url: 'hoony'
+    },{
+      avatar: 'https://avatars2.githubusercontent.com/u/1661950?v=3&s=460',
+      url: 'mozodev'
+    }],
+    updates: [{
+      id: 1,
+      title: 'migrate database from old blog',
+      desc: 'export from wordpress and import to jekyll',
+      label: 'bug',
+      status: true
+    },{
+      id: 2,
+      title: 'migrate database from old blog',
+      desc: 'export from wordpress and import to jekyll',
+      label: 'bug',
+      status: true
+    }]
+  })
+})
+
+Update.find({}).remove(function () {
+  Update.create({
+    id: 1,
+    title: 'error with mogoose',
+    desc: 'i cannot use some methods of mogoose',
+    label: 'bug',
+    comment: [{
+      id: 1,
+      desc: 'very good!',
+      user: {
+        avatar: 'https://avatars1.githubusercontent.com/u/1366161?v=3&s=460',
+        url: 'hoony'
+      },
+    },{
+      id: 2,
+      desc: 'very very good!',
+      user: {
+        avatar: 'https://avatars2.githubusercontent.com/u/1661950?v=3&s=460',
+        url: 'mozodev'
+      }
+    }],
+    user: {
+      avatar: 'https://avatars2.githubusercontent.com/u/1661950?v=3&s=460',
+      url: 'mozodev'
+    },
+    projectUrl: 'open-pms'
+  }, {
+    id: 2,
+    title: 'change from mongo to mariadb',
+    desc: 'should we?',
+    label: 'suggest',
+    comment: [{
+      id: 1,
+      desc: 'very good!',
+      user: {
+        avatar: 'https://avatars1.githubusercontent.com/u/1366161?v=3&s=460',
+        url: 'hoony'
+      },
+    },{
+      id: 2,
+      desc: 'very very good!',
+      user: {
+        avatar: 'https://avatars2.githubusercontent.com/u/1661950?v=3&s=460',
+        url: 'mozodev'
+      }
+    }],
+    user: {
+      avatar: 'https://avatars1.githubusercontent.com/u/1366161?v=3&s=460',
+      url: 'hoony'
+    },
+    projectUrl: 'open-pms'
+  }, function () {
+    console.log('finished populating updates');
+  });
+});
+
+Issue.find({}).remove(function () {
+  Issue.create({
+    id: 1,
+    title: 'grunt.js',
+    desc: 'create grunt.js for express',
+    label: 'enhancement',
+    user: {
+      avatar: 'https://avatars2.githubusercontent.com/u/1661950?v=3&s=460',
+      url: 'mozodev'
+    },
+    projectUrl: 'open-pms'
+  },{
+    id: 2,
+    title: 'migrate database from wordpress',
+    desc: 'should migreate databse from origin website codenamu.org',
+    label: 'bug',
+    user: {
+      avatar: 'https://avatars1.githubusercontent.com/u/1366161?v=3&s=460',
+      url: 'hoony'
+    },
+    projectUrl: 'open-pms'
+  })
+})
