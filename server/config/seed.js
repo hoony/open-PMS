@@ -75,10 +75,14 @@ Project.find({}).remove(function () {
       title: 'change from mongo to mariadb',
       desc: 'should we?',
       label: 'suggest'
-    }]
+    }],
+    issues: {
+      categories: ['bug', 'enhancement'],
+      list: [{'id': 1, 'title': 'grunt.js', 'label': 'enhancement'}, {'id': 2, 'title': 'migrate database from wordpress','label': 'bug'}]
+    }
   },{
     title: 'codenamu.github.io',
-    url: 'coenamu.github.io',
+    url: 'codenamu.github.io',
     desc: 'official website of codenamu',
     progress: 57,
     api: 'github',

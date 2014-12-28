@@ -1,0 +1,18 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<section class="container">
+  <section class="row">
+    <div class="col-md-8">
+      <h1>{{issue.title}} <span class="label label-{{issue.label}}">{{issue.label}}</span></h1>
+      <p>{{issue.desc}}</p>
+    </div>
+    <div class="col-md-4">
+      <div class="col-md-4">
+        <div class="row">
+          <h3 class="page-header">Updater</h3>
+          <a href="/users/{{issue.user.url}}"><img class="thumbnail member-thumbnail" src="{{issue.user.avatar}}"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

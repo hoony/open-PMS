@@ -17,7 +17,15 @@ var ProjectSchema = new Schema({
     id: Number,
     title: String,
     desc: String,
-  }]
+  }],
+  issues: {
+    categories: [{ type: String }],
+    list: [{
+      id: Number,
+      title: String,
+      label: String
+    }]
+  }
 });
 
 module.exports = mongoose.model('Project', ProjectSchema);

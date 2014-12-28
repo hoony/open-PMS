@@ -13,11 +13,14 @@ exports.index = function(req, res) {
 
 // Get a single issue
 exports.show = function(req, res) {
-  Issue.findById(req.params.id, function (err, issue) {
-    if(err) { return handleError(res, err); }
-    if(!issue) { return res.send(404); }
-    return res.json(issue);
-  });
+  Issue
+    .findOne()
+    .where({'id': req.params.issueId, 'projectUrl': req.params.projectUrl})
+    .exec(function (err, issue) {
+      if(err) { return handleError(res, err); }
+      if(!issue) { return res.send(404); }
+      return res.json(issue);
+    });
 };
 
 // Creates a new issue in the DB.

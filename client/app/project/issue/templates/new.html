@@ -1,0 +1,25 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<section class="container">
+  <section class="row">
+    <form class="form" name="form" ng-submit="createNewIssue(form)">
+      <div class="form-group">
+        <label for="issueTitle">Title</label>
+        <input type="email" class="form-control" id="issueTitle" placeholder="e.g.">
+      </div>
+      <div class="form-group">
+        <label for="issueContent">Password</label>
+        <textarea class="form-control" id="issueContent" placeholder="e.g." rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="">Category</label><br>
+        <div id="issueCategory">
+          <label class="checkbox-inline" ng-repeat="category in categories">
+            <input type="checkbox" id="{{category}}" value="{{category}}"> <span class="label label-{{category}}">{{category}}</span>
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-default">Create</button>
+    </form>
+  </section>
+</section>

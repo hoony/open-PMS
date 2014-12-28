@@ -7,7 +7,7 @@
     <!-- <p ng-click="editText();"><button class="btn btn-default">edit</button></p> -->
   </div>
 </header>
-
+<p class="help-block"> {{ message }} </p>
 <div class="container">
   <div class="col-md-12">
     <div class="col-md-8">
@@ -21,13 +21,22 @@
     </div>
     <div class="col-md-4">
       <div class="row">
+        <h3 class="page-header">Members</h3>
+        <ul>
+          <li class="member col-md-3" ng-repeat="member in project.members">
+          <a href="users/{{member.url}}"><img class="thumbnail member-thumbnail" src="{{member.avatar}}"></a>
+          </li>
+          <li class="member col-md-3"><button class="btn btn-default" ng-click="joinProject()" ng-show="isNewMember">Join</button></li>
+        </ul>
+      </div>
+      <div class="row">
         <h3 class="page-header">Progress</h3>
         <progressbar class="progress-striped active" value="project.progress" type="info">{{project.progress}}</progressbar>
       </div>
       <div class="row">
-        <h3 class="page-header">Issues</h3>
+        <h3 class="page-header">Issues <span class="pull-right"><a href="/{{project.url}}/issues/new"><button class="btn btn-default">Create</button></a></span></h3>
         <ul>
-          <li class="issue" ng-repeat="issue in issues">
+          <li class="issue" ng-repeat="issue in project.issues.list">
             <h6><a href="/{{project.url}}/issues/{{issue.id}}">{{issue.title}}</a><span class="label label-{{issue.label}} pull-right">{{issue.label}}</span></h6>
           </li>
         </ul>
@@ -54,9 +63,7 @@ ul {
   margin-bottom: 20px;
 }
 
-.issue {
-
+.member-thumbnail {
+  width: 100%;
 }
 </style>
-<script>
-</script>
