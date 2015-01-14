@@ -170,7 +170,7 @@ Issue.find({}).remove(function () {
     id: 1,
     title: 'grunt.js',
     desc: 'create grunt.js for express',
-    label: 'enhancement',
+    label: ['enhancement', 'bug'],
     user: {
       avatar: 'https://avatars2.githubusercontent.com/u/1661950?v=3&s=460',
       url: 'mozodev'

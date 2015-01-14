@@ -7,7 +7,7 @@ var IssueSchema = new Schema({
   id: Number,
   title: String,
   desc: String,
-  label: String,
+  label: [{type: String}],
   user: {
     avatar: String,
     url: String
